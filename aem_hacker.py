@@ -171,10 +171,9 @@ def exposed_get_servlet(base_url, my_host, debug=False, proxy=None):
 
 @register
 def exposed_querybuilder_servlet(base_url, my_host, debug=False, proxy=None):
- QUERYBUILDER = itertools.product(('/bin/querybuilder.json', '/bin/querybuilder.json.servlet',
+    QUERYBUILDER = itertools.product(('/bin/querybuilder.json', '/bin/querybuilder.json.servlet',
                                       '///bin///querybuilder.json', '///bin///querybuilder.json.servlet',
                                       '/bin/querybuilder.feed', '/bin/querybuilder.feed.servlet',
-                                       '////bin///querybuilder.feed', '////bin///querybuilder.feed.servlet',
                                       '///bin///querybuilder.feed', '///bin///querybuilder.feed.servlet'),
                                      ('', '.css', '.ico', '.png', '.gif', '.jpeg', '.html', '.1.json', '.4.2.1...json',
                                       '/a.css', '/a.html', '/a.ico', '/a.png' '/a.js', '/a.1.json', '/a.4.2.1...json',
