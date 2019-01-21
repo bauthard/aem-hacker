@@ -175,8 +175,8 @@ def exposed_querybuilder_servlet(base_url, my_host, debug=False, proxy=None):
                                       '///bin///querybuilder.json', '///bin///querybuilder.json.servlet',
                                       '////bin///querybuilder.json', '////bin///querybuilder.json.servlet',
                                       '/bin/querybuilder.feed', '/bin/querybuilder.feed.servlet',
-                                      '///bin///querybuilder.feed', '///bin///querybuilder.feed.servlet'),
-    								  '////bin///querybuilder.feed', '////bin///querybuilder.feed.servlet'),
+                                      '///bin///querybuilder.feed', '///bin///querybuilder.feed.servlet',
+    				      '////bin///querybuilder.feed', '////bin///querybuilder.feed.servlet'),
                                      ('', '.css', '.ico', '.png', '.gif', '.jpeg', '.html', '.1.json', '.4.2.1...json',
                                       '/a.css', '/a.html', '/a.ico', '/a.png' '/a.js', '/a.1.json', '/a.4.2.1...json',
                                       ';%0aa.css', ';%0aa.png', ';%0aa.js', ';%0aa.html', ';%0aa.ico'))
